@@ -86,7 +86,12 @@ angular.module('starter.controllers', [])
     };
 })
 
-.controller('HomeCtrl', function($scope, $state) {
+.controller('HomeCtrl', function($scope, $timeout, $stateParams, ionicMaterialInk, $state) {
+    $scope.$parent.clearFabs();
+    $timeout(function() {
+        $scope.$parent.hideHeader();
+    }, 0);
+    ionicMaterialInk.displayEffect();
 
   $scope.homeLogin= function () {
     $state.go('app.login');
@@ -370,29 +375,61 @@ angular.module('starter.controllers', [])
         ionicMaterialInk.displayEffect();
     })
 
-    .controller('DistProductDetailCtrl', function($scope, $timeout, ionicMaterialMotion) {
+    .controller('DistProductDetailCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+        // Set Header
+        $scope.$parent.showHeader();
+        $scope.$parent.clearFabs();
+        $scope.isExpanded = false;
+        $scope.$parent.setExpanded(false);
+        $scope.$parent.setHeaderFab(false);
+
+        // Set Motion
+        $timeout(function() {
+            ionicMaterialMotion.slideUp({
+                selector: '.slide-up'
+            });
+        }, 300);
 
         $timeout(function() {
             ionicMaterialMotion.fadeSlideInRight({
                 startVelocity: 3000
             });
         }, 700);
+
+        // Set Ink
+        ionicMaterialInk.displayEffect();
     })
 
-    .controller('DistOrderCtrl', function($scope, $timeout, ionicMaterialMotion, $state) {
+    .controller('DistOrderCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk, $state) {
+        // Set Header
+        $scope.$parent.showHeader();
+        $scope.$parent.clearFabs();
+        $scope.isExpanded = false;
+        $scope.$parent.setExpanded(false);
+        $scope.$parent.setHeaderFab(false);
+
+        // Set Motion
+        $timeout(function() {
+            ionicMaterialMotion.slideUp({
+                selector: '.slide-up'
+            });
+        }, 300);
 
         $timeout(function() {
             ionicMaterialMotion.fadeSlideInRight({
                 startVelocity: 3000
             });
         }, 700);
+
+        // Set Ink
+        ionicMaterialInk.displayEffect();
 
       $scope.distributorOrder= function () {
         $state.go('app.distributor_create_order');
       };
     })
 
-    .controller('CreateDistOrderCtrl', function($scope, $timeout, ionicMaterialMotion) {
+    .controller('CreateDistOrderCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
 
       $scope.qty = 1;
       $scope.increment = function(){
@@ -427,15 +464,6 @@ angular.module('starter.controllers', [])
                 account: "Food City"
             }
         ];
-
-        $timeout(function() {
-            ionicMaterialMotion.fadeSlideInRight({
-                startVelocity: 3000
-            });
-        }, 700);
-    })
-
-    .controller('DistOrderDetailCtrl', function($scope, $timeout, ionicMaterialInk) {
         // Set Header
         $scope.$parent.showHeader();
         $scope.$parent.clearFabs();
@@ -443,29 +471,98 @@ angular.module('starter.controllers', [])
         $scope.$parent.setExpanded(false);
         $scope.$parent.setHeaderFab(false);
 
+        // Set Motion
+        $timeout(function() {
+            ionicMaterialMotion.slideUp({
+                selector: '.slide-up'
+            });
+        }, 300);
+
         $timeout(function() {
             ionicMaterialMotion.fadeSlideInRight({
                 startVelocity: 3000
             });
         }, 700);
+
+        // Set Ink
+        ionicMaterialInk.displayEffect();
     })
 
-    .controller('TargetOSCtrl', function($scope, $timeout, ionicMaterialMotion) {
+    .controller('DistOrderDetailCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+        // Set Header
+        $scope.$parent.showHeader();
+        $scope.$parent.clearFabs();
+        $scope.isExpanded = false;
+        $scope.$parent.setExpanded(false);
+        $scope.$parent.setHeaderFab(false);
+
+        // Set Motion
+        $timeout(function() {
+            ionicMaterialMotion.slideUp({
+                selector: '.slide-up'
+            });
+        }, 300);
 
         $timeout(function() {
             ionicMaterialMotion.fadeSlideInRight({
                 startVelocity: 3000
             });
         }, 700);
+
+        // Set Ink
+        ionicMaterialInk.displayEffect();
+
+
     })
 
-    .controller('ChannelPartnerCtrl', function($scope, $state, $timeout, ionicMaterialMotion) {
+    .controller('TargetOSCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+        // Set Header
+        $scope.$parent.showHeader();
+        $scope.$parent.clearFabs();
+        $scope.isExpanded = false;
+        $scope.$parent.setExpanded(false);
+        $scope.$parent.setHeaderFab(false);
+
+        // Set Motion
+        $timeout(function() {
+            ionicMaterialMotion.slideUp({
+                selector: '.slide-up'
+            });
+        }, 300);
 
         $timeout(function() {
             ionicMaterialMotion.fadeSlideInRight({
                 startVelocity: 3000
             });
         }, 700);
+
+        // Set Ink
+        ionicMaterialInk.displayEffect();
+    })
+
+    .controller('ChannelPartnerCtrl', function($scope, $state, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+        // Set Header
+        $scope.$parent.showHeader();
+        $scope.$parent.clearFabs();
+        $scope.isExpanded = false;
+        $scope.$parent.setExpanded(false);
+        $scope.$parent.setHeaderFab(false);
+
+        // Set Motion
+        $timeout(function() {
+            ionicMaterialMotion.slideUp({
+                selector: '.slide-up'
+            });
+        }, 300);
+
+        $timeout(function() {
+            ionicMaterialMotion.fadeSlideInRight({
+                startVelocity: 3000
+            });
+        }, 700);
+
+        // Set Ink
+        ionicMaterialInk.displayEffect();
 
       $scope.news= function () {
         $state.go('app.news');
@@ -487,13 +584,30 @@ angular.module('starter.controllers', [])
       };
     })
 
-    .controller('notificationCtrl', function($scope, $timeout, ionicMaterialMotion, $http, API_ENDPOINT ) {
+    .controller('notificationCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk,$http,API_ENDPOINT ) {
+        // Set Header
+        $scope.$parent.showHeader();
+        $scope.$parent.clearFabs();
+        $scope.isExpanded = false;
+        $scope.$parent.setExpanded(false);
+        $scope.$parent.setHeaderFab(false);
+
+        // Set Motion
+        $timeout(function() {
+            ionicMaterialMotion.slideUp({
+                selector: '.slide-up'
+            });
+        }, 300);
 
         $timeout(function() {
             ionicMaterialMotion.fadeSlideInRight({
                 startVelocity: 3000
             });
         }, 700);
+
+        // Set Ink
+        ionicMaterialInk.displayEffect();
+
       $http.get(API_ENDPOINT.url+'/services.php/notilimit/0/5').then(function (result) {
 
 
@@ -506,16 +620,45 @@ angular.module('starter.controllers', [])
 
       })
 
-    .controller('ChangePassCtrl', function($scope, $timeout, ionicMaterialMotion) {
+    .controller('ChangePassCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+        // Set Header
+        $scope.$parent.showHeader();
+        $scope.$parent.clearFabs();
+        $scope.isExpanded = false;
+        $scope.$parent.setExpanded(false);
+        $scope.$parent.setHeaderFab(false);
+
+        // Set Motion
+        $timeout(function() {
+            ionicMaterialMotion.slideUp({
+                selector: '.slide-up'
+            });
+        }, 300);
 
         $timeout(function() {
             ionicMaterialMotion.fadeSlideInRight({
                 startVelocity: 3000
             });
         }, 700);
+
+        // Set Ink
+        ionicMaterialInk.displayEffect();
     })
 
-    .controller('NewsCtrl', function($scope, $timeout, ionicMaterialMotion) {
+    .controller('NewsCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+        // Set Header
+        $scope.$parent.showHeader();
+        $scope.$parent.clearFabs();
+        $scope.isExpanded = false;
+        $scope.$parent.setExpanded(false);
+        $scope.$parent.setHeaderFab(false);
+
+        // Set Motion
+        $timeout(function() {
+            ionicMaterialMotion.slideUp({
+                selector: '.slide-up'
+            });
+        }, 300);
 
         $timeout(function() {
             ionicMaterialMotion.fadeSlideInRight({
@@ -523,9 +666,24 @@ angular.module('starter.controllers', [])
             });
         }, 700);
 
+        // Set Ink
+        ionicMaterialInk.displayEffect();
     })
 
-    .controller('CustomerFeedbackCtrl', function($scope, $timeout, ionicMaterialMotion) {
+    .controller('CustomerFeedbackCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+        // Set Header
+        $scope.$parent.showHeader();
+        $scope.$parent.clearFabs();
+        $scope.isExpanded = false;
+        $scope.$parent.setExpanded(false);
+        $scope.$parent.setHeaderFab(false);
+
+        // Set Motion
+        $timeout(function() {
+            ionicMaterialMotion.slideUp({
+                selector: '.slide-up'
+            });
+        }, 300);
 
         $timeout(function() {
             ionicMaterialMotion.fadeSlideInRight({
@@ -533,15 +691,33 @@ angular.module('starter.controllers', [])
             });
         }, 700);
 
+        // Set Ink
+        ionicMaterialInk.displayEffect();
     })
 
-    .controller('RetailerHomeCtrl', function($scope, $timeout, ionicMaterialMotion, $state) {
+    .controller('RetailerHomeCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk, $state) {
+        // Set Header
+        $scope.$parent.showHeader();
+        $scope.$parent.clearFabs();
+        $scope.isExpanded = false;
+        $scope.$parent.setExpanded(false);
+        $scope.$parent.setHeaderFab(false);
+
+        // Set Motion
+        $timeout(function() {
+            ionicMaterialMotion.slideUp({
+                selector: '.slide-up'
+            });
+        }, 300);
 
         $timeout(function() {
             ionicMaterialMotion.fadeSlideInRight({
                 startVelocity: 3000
             });
         }, 700);
+
+        // Set Ink
+        ionicMaterialInk.displayEffect();
 
       $scope.retailerProfile= function () {
         $state.go('app.retailer_my_profile');
@@ -566,7 +742,20 @@ angular.module('starter.controllers', [])
       };
     })
 
-    .controller('RetailerProfileCtrl', function($scope, $timeout, ionicMaterialMotion) {
+    .controller('RetailerProfileCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+        // Set Header
+        $scope.$parent.showHeader();
+        $scope.$parent.clearFabs();
+        $scope.isExpanded = false;
+        $scope.$parent.setExpanded(false);
+        $scope.$parent.setHeaderFab(false);
+
+        // Set Motion
+        $timeout(function() {
+            ionicMaterialMotion.slideUp({
+                selector: '.slide-up'
+            });
+        }, 300);
 
         $timeout(function() {
             ionicMaterialMotion.fadeSlideInRight({
@@ -574,9 +763,24 @@ angular.module('starter.controllers', [])
             });
         }, 700);
 
+        // Set Ink
+        ionicMaterialInk.displayEffect();
     })
 
-    .controller('ForgotPasswordCtrl', function($scope, $timeout, ionicMaterialMotion) {
+    .controller('ForgotPasswordCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+        // Set Header
+        $scope.$parent.showHeader();
+        $scope.$parent.clearFabs();
+        $scope.isExpanded = false;
+        $scope.$parent.setExpanded(false);
+        $scope.$parent.setHeaderFab(false);
+
+        // Set Motion
+        $timeout(function() {
+            ionicMaterialMotion.slideUp({
+                selector: '.slide-up'
+            });
+        }, 300);
 
         $timeout(function() {
             ionicMaterialMotion.fadeSlideInRight({
@@ -584,9 +788,24 @@ angular.module('starter.controllers', [])
             });
         }, 700);
 
+        // Set Ink
+        ionicMaterialInk.displayEffect();
     })
 
-    .controller('brandStoriesCtrl', function($http, $scope, $timeout, ionicMaterialMotion, brandstoryService, API_ENDPOINT) {
+    .controller('brandStoriesCtrl', function($http,$scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk,brandstoryService,API_ENDPOINT) {
+        // Set Header
+        $scope.$parent.showHeader();
+        $scope.$parent.clearFabs();
+        $scope.isExpanded = false;
+        $scope.$parent.setExpanded(false);
+        $scope.$parent.setHeaderFab(false);
+
+        // Set Motion
+        $timeout(function() {
+            ionicMaterialMotion.slideUp({
+                selector: '.slide-up'
+            });
+        }, 300);
 
         $timeout(function() {
             ionicMaterialMotion.fadeSlideInRight({
@@ -594,6 +813,8 @@ angular.module('starter.controllers', [])
             });
         }, 700);
 
+        // Set Ink
+        ionicMaterialInk.displayEffect();
       $http.get(API_ENDPOINT.url+'/brand_story.php/brandstory/0/5').then(function (result) {
 
         console.log(result.data);
@@ -602,7 +823,20 @@ angular.module('starter.controllers', [])
       });
     })
 
-    .controller('feedbackQueryCtrl', function($scope, $timeout, ionicMaterialMotion) {
+    .controller('feedbackQueryCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+        // Set Header
+        $scope.$parent.showHeader();
+        $scope.$parent.clearFabs();
+        $scope.isExpanded = false;
+        $scope.$parent.setExpanded(false);
+        $scope.$parent.setHeaderFab(false);
+
+        // Set Motion
+        $timeout(function() {
+            ionicMaterialMotion.slideUp({
+                selector: '.slide-up'
+            });
+        }, 300);
 
         $timeout(function() {
             ionicMaterialMotion.fadeSlideInRight({
@@ -610,24 +844,58 @@ angular.module('starter.controllers', [])
             });
         }, 700);
 
+        // Set Ink
+        ionicMaterialInk.displayEffect();
     })
 
-    .controller('RetailerProductDetailCtrl', function($scope, $timeout, ionicMaterialMotion) {
+    .controller('RetailerProductDetailCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+        // Set Header
+        $scope.$parent.showHeader();
+        $scope.$parent.clearFabs();
+        $scope.isExpanded = false;
+        $scope.$parent.setExpanded(false);
+        $scope.$parent.setHeaderFab(false);
+
+        // Set Motion
+        $timeout(function() {
+            ionicMaterialMotion.slideUp({
+                selector: '.slide-up'
+            });
+        }, 300);
 
         $timeout(function() {
             ionicMaterialMotion.fadeSlideInRight({
                 startVelocity: 3000
             });
         }, 700);
+
+        // Set Ink
+        ionicMaterialInk.displayEffect();
     })
 
-    .controller('RetailerCreatteCtrl', function($scope, $timeout, ionicMaterialMotion) {
+    .controller('RetailerCreatteCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+        // Set Header
+        $scope.$parent.showHeader();
+        $scope.$parent.clearFabs();
+        $scope.isExpanded = false;
+        $scope.$parent.setExpanded(false);
+        $scope.$parent.setHeaderFab(false);
+
+        // Set Motion
+        $timeout(function() {
+            ionicMaterialMotion.slideUp({
+                selector: '.slide-up'
+            });
+        }, 300);
 
         $timeout(function() {
             ionicMaterialMotion.fadeSlideInRight({
                 startVelocity: 3000
             });
         }, 700);
+
+        // Set Ink
+        ionicMaterialInk.displayEffect();
     })
 
   .controller('customerLoginCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk, $state) {
@@ -657,7 +925,7 @@ angular.module('starter.controllers', [])
     $scope.customerLogin1= function (customer,customerLoginForm) {
       if(customerLoginForm.$valid){
         console.log(customerLoginForm,customer);
-        $state.go('app.login');
+        $state.go('app.dashboard');
       }
     }
   })

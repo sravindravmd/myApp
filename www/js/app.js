@@ -390,6 +390,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
         }
       })
 
+      .state('app.dashboard', {
+        url: '/dashboard',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/dashboard.html'
+            //controller: 'customerLoginCtrl'
+          }
+        }
+      })
     ;
 
     // if none of the above states are matched, use this as the fallback
