@@ -348,6 +348,9 @@ angular.module('starter.controllers', [])
       $scope.changePassword= function () {
         $state.go('app.change_password');
       };
+      $scope.distributorOrder= function () {
+        $state.go('app.distributor_create_order');
+      };
     })
 
     .controller('DistProfileCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
