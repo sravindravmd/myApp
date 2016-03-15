@@ -15,16 +15,28 @@
                     </select>
                 </label>-->
                 <div class="row">
-                    <div class="col col-offset-10 col-30 font_color" style="text-align: left"><input type="radio" style="background-color: black" name="reading" value="distributor" ng-model="choose" checked /> Distributor</div>
-                    <div class="col  col-30 font_color" style="text-align: left"><input type="radio" name="reading" value="retailer" ng-model="choose" /> Retailer</div>
+                    <div class="col col-offset-10 col-30 font_color" style="text-align: left"><input type="radio" id="dist" style="background-color: black" name="reading" value="distributor" ng-model="choose" checked />
+                      <label for="dist">Distributor</label>
+                    </div>
+                    <div class="col  col-30 font_color" style="text-align: left"><input type="radio" id="retal" name="reading" value="retailer" ng-model="choose" />
+                      <label for="retal">Retailer</label>
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col col-offset-10 col-30 font_color" style="text-align: left"><input type="radio" style="background-color: black" name="reading" value="customer" ng-model="choose"  /> Customer</div>
-                    <div class="col  col-30 font_color" style="text-align: left"><input type="radio" name="reading" value="manager_L1" ng-model="choose" /> Sales Manager_L1</div>
+                    <div class="col col-offset-10 col-30 font_color" style="text-align: left"><input type="radio" id="cust" style="background-color: black" name="reading" value="customer" ng-model="choose"  />
+                      <label for="cust">Customer</label>
+                    </div>
+                    <div class="col  col-30 font_color" style="text-align: left"><input type="radio" id="saleL1" name="reading" value="manager_L1" ng-model="choose" />
+                      <label for="saleL1">Sales Manager_L1</label>
+                    </div>
                 </div>
                 <div class="row">
-                  <div class="col col-offset-10 col-30 font_color"  style="text-align: left" ><input type="radio" name="reading" value="manager_L2" ng-model="choose" /> Sales Manager_L2</div>
-                    <div class="col  col-30 font_color"  style="text-align: left"><input type="radio" name="reading" value="manager_L3" ng-model="choose" /> Sales Manager_L3</div>
+                  <div class="col col-offset-10 col-30 font_color"  style="text-align: left" ><input type="radio" id="saleL2" name="reading" value="manager_L2" ng-model="choose" />
+                    <label for="saleL2">Sales Manager_L2</label>
+                  </div>
+                    <div class="col  col-30 font_color"  style="text-align: left"><input type="radio" id="saleL3" name="reading" value="manager_L3" ng-model="choose" />
+                      <label for="saleL3">Sales Manager_L3</label>
+                    </div>
                 </div>
 
                 <ng-form name="distributorForm" ng-show="choose == 'distributor'"><div >

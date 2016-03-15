@@ -292,10 +292,15 @@ input[type=password]:focus {
 }*/
 
 /* Styles here */
-.item-select {
-  width: 75%; /* Or whatever you'd like the width to be */
+/*.item-select {
+  width: 75%; !* Or whatever you'd like the width to be *!
 }
 
 .item-select select {
   left: 0;
+}*/
+input[type=radio] {
+  border: 0px;
+  width: 15%;
+  height: 1.2em;
 }
