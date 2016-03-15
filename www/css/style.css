@@ -1,0 +1,292 @@
+/* General
+==================================*/
+h1 {
+    color: #fff;
+    text-shadow: 0 1px 0px #000;
+    font-size: 42px;
+}
+
+
+/* Utilities
+==================================*/
+.title-bordered {
+    border-top: solid 2px #bbb;
+    padding-top: 30px;
+}
+
+p {
+    color: #555;
+    margin: 0 0 25px;
+}
+
+.scroll {
+    height: 100%;
+}
+
+
+/* Menu
+==================================*/
+.menu .bar.bar-header.expanded {
+    transition: all .5s ease-in-out;
+}
+
+.menu-open .bar.bar-header.expanded {
+    background-color: #ff9900;
+}
+
+.menu h2 {
+    bottom: 0;
+    font-size: 18px;
+    left: 16px;
+    position: absolute;
+}
+
+.menu .avatar {
+    height: 88px;
+    width: 88px;
+}
+
+.menu.menu-left * {
+    font-weight: bold;
+}
+
+.menu-open .ion-navicon {
+    transform: rotate(-360deg);
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.menu-open .ion-navicon:before {
+    content: "\f2ca";
+}
+
+
+/* Login
+==================================*/
+.app-icon {
+    background-color: #fff;
+    background: url('../img/2.jpg') center;
+    background-size: 240px 60px;
+    background-repeat: no-repeat;
+    /*background-size: cover;*/
+    /*border-radius: 50%;*/
+    height: 125px;
+    margin: 0 auto;
+    width: 230px;
+}
+
+.social-login {
+    position: fixed;
+    bottom: 0;
+}
+.login-back{
+    background: url(../img/login.jpg) center; background-size: cover;
+}
+
+.menu-icon{
+    background: url(../img/4.jpg) center;
+    background-size: 70px 75px;
+}
+
+.ion-input-select--large,
+.ion-input-select,
+select {
+    -webkit-appearance:none;
+    background-repeat: no-repeat;
+    background-color: rgba(0,0,0,0);
+    border:thin solid #dddddd;
+    font-weight:300;
+    display:inline;
+    vertical-align:middle;
+    /*color:#fff;*/
+    color:#444;
+    padding: auto 0;
+    overflow:hidden;
+    box-sizing:border-box;
+
+}
+
+/*
+.ion-input-select--large {
+    width:420px;
+    font-size:1.6rem;
+    text-indent:40px;
+    padding:1.2rem 0;
+}
+*/
+
+.ion-input-select {
+    width:300px;
+    font-size:1rem;
+    text-indent:20px;
+    padding:.5rem 0;
+}
+
+/*option {
+    background:#444;
+}*/
+option {
+    background:#fff;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+:focus {
+    outline:0;
+}
+.small_button{
+    line-height: 5px !important;
+    min-height: 24px !important;
+}
+.back_color{
+    background-color: #01BCFF;
+}
+.home_font{
+    color:#d54f38;
+}
+.wel_font{
+    font-size: 35px;
+    font-weight: 400;
+    color:#d54f38;
+}
+
+.btn_size_l{
+    border-radius: 30px 0 0 2px !important;
+}
+
+.btn_size_r{
+    border-radius: 0 2px 30px 0 !important;
+}
+.custom-dark{
+    /*color : #30393A !important;*/
+    background-color:#ff9900 !important;
+}
+.custom-dark1{
+    color : white !important;
+    background-color:#b30000 !important;
+}
+.custom-dark2{
+    color : white !important;
+    background-color:#b8b894 !important;
+}
+.custom-dark3{
+    color : white !important;
+    background-color:#ff9900 !important;
+}
+input[type=tel] {
+    text-align:center;
+    height:20px;
+    border: 0;
+    width: calc(100% - 2px);
+    margin-left:1px;
+    margin-right: 16px;
+    box-shadow: -8px 10px 0px -7px #ff9900, 8px 10px 0px -7px #ff9900;
+    -webkit-transition: box-shadow 0.3s;
+    transition: box-shadow 0.3s;
+}
+input[type=tel  ]:focus {
+    outline: none;
+    box-shadow: -8px 10px 0px -7px #cccccc, 8px 10px 0px -7px #cccccc;
+}
+
+input[type=text] {
+    text-align:center;
+    height:20px;
+    border: 0;
+    width: calc(100% - 2px);
+    margin-left:1px;
+    margin-right: 16px;
+    box-shadow: -8px 10px 0px -7px #ff9900, 8px 10px 0px -7px #ff9900;
+    -webkit-transition: box-shadow 0.3s;
+    transition: box-shadow 0.3s;
+}
+input[type=text]:focus {
+    outline: none;
+    box-shadow: -8px 10px 0px -7px #cccccc, 8px 10px 0px -7px #cccccc;
+}
+input[type=password] {
+    text-align:center;
+    height:20px;
+    border: 0;
+    width: calc(100% - 2px);
+    margin-left:1px;
+    margin-right: 16px;
+    box-shadow: -8px 10px 0px -7px #ff9900, 8px 10px 0px -7px #ff9900;
+    -webkit-transition: box-shadow 0.3s;
+    transition: box-shadow 0.3s;
+}
+input[type=password]:focus {
+    outline: none;
+    box-shadow: -8px 10px 0px -7px #cccccc, 8px 10px 0px -7px #cccccc;
+}
+
+/*input[type=number] {
+    text-align:center;
+    height:20px;
+    border: 0;
+    width: calc(100% - 2px);
+    margin-left:1px;
+    margin-right: 16px;
+    box-shadow: -8px 10px 0px -7px #ff9900, 8px 10px 0px -7px #ff9900;
+    -webkit-transition: box-shadow 0.3s;
+    transition: box-shadow 0.3s;
+}
+input[type=password]:focus {
+    outline: none;
+    box-shadow: -8px 10px 0px -7px #cccccc, 8px 10px 0px -7px #cccccc;
+}*/
+
+.margn_top{
+    padding-top: 20px;
+}
+
+/*.sg-replace-icons input[type=radio] + label:before,
+.sg-replace-icons input[type=checkbox] + label:before {
+    !* Default font size *!
+    !* font-size:1.3em; *!
+
+    !* Larger font size *!
+    font-size: 25px;
+}*/
+.margn_top1{
+    padding-top: 40px;
+}
+.font_color{
+    color: #000000 !important;
+}
+
+.side_header_coler{
+    background-color: #ff9900;
+}
+.main_header_coler{
+    background-color: #ff9900 !important;
+    color : white !important;
+}
+.logo_hight{
+    height: 230px;
+}
+/* Create Order   */
+/*body {
+    cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}*/
+
+.header .col {
+    background-color:lightgrey;
+}
+
+/*.col {
+    border: solid 1px grey;
+    border-bottom-style: none;
+    border-right-style: none;
+}*/
+
+/*.col:last-child {
+    border-right: solid 1px grey;
+}*/
+
+/*
+.row:last-child .col {
+    border-bottom: solid 1px grey;
+}*/

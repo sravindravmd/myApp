@@ -1,0 +1,21 @@
+<ion-view view-title="Customer Login">
+    <ion-content ng-class="{expanded:isExpanded}">
+        <div class="hero no-header flat">
+            <div class="app-icon"></div>
+            <div class="content"></div>
+            <ng-form name="customerLoginForm">
+                <div class="list">
+                    <label class="item-input margn_top1"><input placeholder="Enter OTP" type="text" name="opt" ng-model="customer.opt" required /></label>
+                    <label class="item-input margn_top"><input placeholder="New Password" type="password" name="password" ng-model="customer.password" required /></label>
+                    <label class="item-input margn_top"><input placeholder="Confirm Password" type="password" name="conPassword" ng-model="customer.conPassword" required /></label>
+                </div>
+                <button ng-disabled="customerLoginForm.$invalid" class="button button-full custom-dark1 ink" ng-click="customerLogin1(customer ,customerLoginForm)">Next</button>
+                <div ng-show="customerLoginForm.$invalid">
+                    <p ng-show="customerLoginForm.opt.$error.required && customerLoginForm.$dirty">OPT required</p>
+                    <p ng-show="customerLoginForm.password.$error.required && customerLoginForm.$dirty">Password required</p>
+                    <p ng-show="customerLoginForm.conPassword.$error.required && customerLoginForm.$dirty">Confirm Password</p>
+                </div>
+            </ng-form>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,33 @@
+<ion-view view-title="Login" align-title="left">
+    <ion-content class="">
+        <div class="hero no-header flat">
+            <div class="app-icon"></div>
+            <div class="content"></div>
+            <form name="myForm" novalidate>
+                <div class="row">
+                    <div class="col col-30 font_color"><input type="radio" style="background-color: black" name="reading" value="feedback" ng-model="choose" checked /> Feedback</div>
+                    <div class="col font_color"><input type="radio" name="reading" value="query" ng-model="choose" /> Query</div>
+                </div>
+                <div ng-show="choose == 'feedback'">
+                    <div class="list padding">
+                        <label class="item-input margn_top1"><input placeholder="Text" type="text" value=""/></label>
+                    </div>
+                    <button class="button button-full custom-dark1 ink" ng-disabled="myForm.$invalid" ng-click="submit(username)">Login</button>
+                </div>
+                <!--<div class="padding">z
+                    <p ng-show="myForm.username.$error.required">* Username is required</p>
+                    <p ng-show="myForm.username.$invalid && !myForm.username.$pristine">* Username must be an email address</p>
+                    <p ng-show="myForm.username.$error.minlength">* Username must be longer than 5 characters</p>
+                    <p ng-show="myForm.password.$error.required">* Password is required</p>
+                    <p ng-show="myForm.password.$error.minlength">* Password must be longer than 6 characters</p>
+                </div>-->
+                <div ng-show="choose == 'query'">
+                    <div class="list padding">
+                        <label class="item-input margn_top1"><input placeholder="Text" type="text" value=""/></label>
+                    </div>
+                    <button class="button button-full custom-dark1 ink" ng-disabled="myForm.$invalid" ng-click="submit()">Login</button>
+                </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

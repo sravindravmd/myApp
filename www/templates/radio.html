@@ -1,0 +1,27 @@
+<ion-view view-title="Radio">
+    <ion-content ng-class="{expanded:isExpanded}">
+        <!--<div ng-controller="RadioCtrl" class="bar-subheader">
+            <div class="button-bar padding">
+                <a class="button btn_size_l" ng-class="{'button-positive': isActive('dist')}" ng-click="setActive('dist')">Distributor</a>
+                <a class="button btn_size_r" ng-class="{'button-positive': isActive('retailer')}" ng-click="setActive('retailer')">Retailer</a>
+                &lt;!&ndash;<a class="button" ng-class="{'button-positive': isActive('chnel_part')}" ng-click="setActive('chnel_part')">Channel Partner</a>&ndash;&gt;
+            </div>
+        </div>
+        &lt;!&ndash;<div ng-controller="RadioCtrl" class="bar-subheader">
+        <div class="button-bar">
+            <a class="button">First</a>
+            <a class="button">Second</a>
+            <a class="button">Third</a>
+        </div>
+            </div>&ndash;&gt;-->
+        <div ng-controller="NameCtrl">
+            <label class="item item-input">
+
+            <input ng-model="distName" type="text"/>Distributor Name name:</label>
+            <br>
+            Retailer name:<input ng-model="retName" type="text"/>
+            <br>
+            Hello {{distName}} {{retName}}
+        </div>
+    </ion-content>
+</ion-view>

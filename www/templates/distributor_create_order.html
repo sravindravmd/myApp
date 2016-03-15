@@ -1,0 +1,87 @@
+<ion-view view-title="Welcome Distributor Name">
+  <ion-content ng-class="{expanded:$scope.isExpanded}">
+    <div class="tabs tabs-icon-top static">
+      <p>Create Distributor Order</p>
+    </div>
+    <!--<div class="list">
+        <a class="item"><h2>Product Name :</h2></a>
+        <a class="item"><h2>Quantity :</h2></a>
+    </div>-->
+    <ng-form name="product padding">
+      <label class="item item-input item-select">
+        <div class="input-label">Product Name</div>
+        <select ng-model="product">
+          <option selected value="A">A</option>
+          <option value="B" >B</option>
+          <option>C</option>
+        </select>
+      </label>
+      <!--<label class="item item-input item-select">
+          <div class="input-label">Quantity</div>
+          <select ng-model="product.qty">
+              <option selected value="10">10</option>
+              <option value="20" >20</option>
+              <option>C</option>
+          </select>
+      </label>-->
+
+      <div class="row padding">
+        <div class="col col-offset-0 col-30">Quantity</div>
+        <div class="col col-offset-0 col-30">
+          <button class="button button-small custom-dark1" title="Decrement" ng-click="decrement()">
+            <i class="icon ion-minus-round icon-right"></i>
+          </button>
+        </div>
+        <div class="col col-20">
+          <input type="number" placeholder=" Filter Quantity..." ng-model="qty" />
+        </div>
+        <div class="col col-offset-10 col-20">
+          <button class="button button-small custom-dark3" title="Increment" ng-click="increment()">
+            <i class="icon ion-plus-round"></i>
+          </button>
+        </div>
+      </div>
+      <!--<div class="input-label">Quantity</div>
+      <div class="row" >
+          <div class=''>
+              <list>
+                  <div class=''>
+                      <button class="button button-small icon ion-minus" ng-click='decrement()' style="margin-right: 10px;"></button>
+                      <label class="item-input-wrapper">
+                          <input type="number" ng-model="qty" readonly="">
+                      </label>
+                      <button class="button button-small icon ion-plus" ng-click='increment()'></button>
+                  </div>
+              </list>
+          </div>
+          <div class="col col-10"></div>
+      </div>-->
+
+    </ng-form>
+    <div ng-controller="CreateDistOrderCtrl as ctrl">
+      <div class="row header col-box">
+        <div class="col col-33">Product Name</div>
+        <div class="col col-33">Quantity</div>
+        <div class="col col-33">Action</div>
+      </div>
+      <div class="row" ng-repeat="data in ctrl.data">
+        <div class="col col-33">{{data.name}}</div>
+        <div class="col col-33">{{data.code}}</div>
+        <!--<div class="col"><button class="button-small" ng-click="ctrl.add($index)">Remove</button></div>-->
+        <div class="col col-33">
+          <a><i class="icon ion-close-circled"></i></a>
+        </div>
+      </div>
+      <hr>
+    </div>
+    <div class="row">
+      <div class="col col-66"></div>
+      <!-- <div class="col"></div>
+       <div class="col"></div>
+       <div class="col"></div>-->
+      <div class="col">
+        <button class="button button-small custom-dark3">Create</button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

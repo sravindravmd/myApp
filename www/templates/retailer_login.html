@@ -1,0 +1,35 @@
+<ion-view view-title="Retailer Login">
+    <ion-content ng-class="{expanded:isExpanded}" class="">
+        <div class="hero no-header flat">
+            <div class="app-icon"></div>
+            <div class="content"></div>
+            <ng-form name="retailerLoginForm">
+                <div class="list">
+                  <label class="item-input margn_top"><input placeholder="Enter OTP" type="text" ng-model="retailer.opt" value=""/></label>
+                    <label class="item-input margn_top"><input type="text" placeholder="User Name" name="userName" ng-model="retailer.userName" required/></label>
+                    <label class="item-input margn_top"><input type="password" placeholder="Password" name="password" ng-model="retailer.password"  required/></label>
+                </div>
+                <button ng-disabled="retailerLoginForm.$invalid" class="button button-full custom-dark1 ink" ng-click="retailLogin(retailer ,retailerLoginForm)">Next</button>
+                <div ng-show="retailerLoginForm.$invalid">
+                    <p ng-show="retailerLoginForm.password.$error.required && retailerLoginForm.$dirty">User Name required</p>
+                    <p ng-show="retailerLoginForm.conPassword.$error.required && retailerLoginForm.$dirty">Password required</p>
+                </div>
+            </ng-form>
+        </div>
+    </ion-content>
+</ion-view>
+
+
+<!--
+<ng-form ng-show="choose == 'manager_L2'" name="manager_L2Form">
+    <div >
+        <div class="list padding">
+            <label class="item-input margn_top1"><input type="text" placeholder="User Name" name="userName" ng-model="manager_L2.userName" required/></label>
+            <label class="item-input margn_top"><input type="password" placeholder="Password" name="password" ng-model="manager_L2.password"  required/></label>
+        </div>
+        <button ng-disabled="manager_L2Form.$invalid" class="button button-full custom-dark1 ink" ng-click="managerL2Login(managerl2 ,manager_L2Form)">Next</button>
+    </div>
+    <div ng-show="manager_L2Form.$invalid">
+        <p ng-show="manager_L2Form.mobile.$error.required && manager_L2Form.$dirty">* Check Mobile Number Already Registered</p>
+    </div>
+</ng-form>-->

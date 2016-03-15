@@ -1,0 +1,21 @@
+<ion-view view-title="Distributor Login">
+  <ion-content ng-class="{expanded:isExpanded}">
+    <div class="hero no-header flat">
+      <div class="app-icon"></div>
+      <div class="content"></div>
+      <ng-form name="distLoginForm">
+        <div class="list">
+          <label class="item-input margn_top1"><input placeholder="Enter OTP" type="text" name="opt" ng-model="distributor.opt" required /></label>
+          <label class="item-input margn_top"><input placeholder="New Password" type="password" name="password" ng-model="distributor.password" required /></label>
+          <label class="item-input margn_top"><input placeholder="Confirm Password" type="password" name="conPassword" ng-model="distributor.conPassword" required /></label>
+        </div>
+        <button ng-disabled="distLoginForm.$invalid" class="button button-full custom-dark1 ink" ng-click="distLogin(distributor ,distLoginForm)">Next</button>
+        <div ng-show="distLoginForm.$invalid">
+          <p ng-show="distLoginForm.opt.$error.required && distLoginForm.$dirty">OPT required</p>
+          <p ng-show="distLoginForm.password.$error.required && distLoginForm.$dirty">Password required</p>
+          <p ng-show="distLoginForm.conPassword.$error.required && distLoginForm.$dirty">Confirm Password</p>
+        </div>
+      </ng-form>
+    </div>
+  </ion-content>
+</ion-view>

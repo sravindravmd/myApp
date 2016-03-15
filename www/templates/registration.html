@@ -1,0 +1,62 @@
+<ion-view view-title="SignUp">
+  <ion-content ng-class="{expanded:isExpanded}">
+    <div class="hero no-header flat">
+      <div class="app-icon"></div>
+      <div class="list padding">
+        <div class="row">
+          <!--<div class="col col-20"></div>-->
+          <div class="col col-30 font_color"><input type="radio" name="group" value="customer" ng-model="choose" checked /> Customer</div>
+          <div class="col font_color"><input type="radio" name="group" value="retailer" ng-model="choose" /> Retailer</div>
+        </div>
+      </div>
+      <ng-form name="customerRegForm" ng-show="choose == 'customer'">
+        <div class="list padding">
+          <label class="item-input margn_top"><input placeholder="Mobile Number" name="mobileNumber" type="text" ng-model="customer.mobileNumber" required/></label>
+          <label class="item-input margn_top"><input placeholder="User Name" type="text" name="userName" ng-model="customer.userName" required/></label>
+        </div>
+        <button ng-disabled="customerRegForm.$invalid" class="button button-full custom-dark1 ink"  ng-click="customerRegistration(customer,customerRegForm)">Submit</button>
+        <div ng-show="customerRegForm.$invalid">
+          <p ng-show="customerRegForm.mobileNumber.$error.required && customerRegForm.$dirty">Mobile Number required</p>
+          <p ng-show="customerRegForm.userName.$error.required && customerRegForm.$dirty">Password required</p>
+        </div>
+      </ng-form>
+      <ng-form name="retailerRegForm" ng-show="choose == 'retailer'">
+        <div>
+          <div class="list padding">
+            <label class="item-input margn_top"><input placeholder="Region" type="text" name="region" ng-model="retailer.region" required/></label>
+            <label class="item-input margn_top"><input placeholder="State" type="text" name="state" ng-model="retailer.state" required/></label>
+          <!--  <label class="item-input margn_top"><input placeholder="Depot" type="text" name="depot" ng-model="retailer.depot" required/></label>-->
+            <label class="item-input margn_top"><input placeholder="City" type="text" name="city" ng-model="retailer.city" required/></label>
+            <label class="item item-input item-select">
+              <div class="input-label">Select Distributor</div>
+              <select name="distributor" ng-model="retailer.distributor" required/>
+              <option>A</option>
+              <option selected>B</option>
+              <option>C</option>
+              </select>
+            </label>
+          </div>
+          <label class="item-input margn_top"><input placeholder="Firm Name" type="text" name="firmName" ng-model="retailer.firmName" required/></label>
+          <label class="item-input margn_top"><input placeholder="Retailer Name" type="text" name="name" ng-model="retailer.name" required/></label>
+          <label class="item-input margn_top"><input placeholder="Mobile Number" type="tel" name="mobile" ng-model="retailer.mobile" required/></label>
+          <label class="item-input margn_top"><input placeholder="Email Id" type="text" name="email" ng-model="retailer.email" required/></label>
+          <label class="item-input margn_top"><input placeholder="Date of Birth" type="text" name="dateOfBirth" ng-model="retailer.dateOfBirth" required/></label>
+          <div ng-show="retailerRegForm.$invalid">
+            <p ng-show="retailerRegForm.name.$error.required && retailerRegForm.$dirty">Name required</p>
+            <p ng-show="retailerRegForm.mobile.$error.required && retailerRegForm.$dirty">Mobile Number required</p>
+            <p ng-show="retailerRegForm.email.$error.required && retailerRegForm.$dirty">Email required</p>
+            <p ng-show="retailerRegForm.dateOfBirth.$error.required && retailerRegForm.$dirty">Date Of Birth Number required</p>
+            <p ng-show="retailerRegForm.retailerName.$error.required && retailerRegForm.$dirty">Retailer Name Number required</p>
+            <p ng-show="retailerRegForm.firmName.$error.required && retailerRegForm.$dirty">Firm Name required</p>
+            <p ng-show="retailerRegForm.city.$error.required && retailerRegForm.$dirty">City required</p>
+            <p ng-show="retailerRegForm.depot.$error.required && retailerRegForm.$dirty">Depot required</p>
+            <p ng-show="retailerRegForm.state.$error.required && retailerRegForm.$dirty">State required</p>
+            <p ng-show="retailerRegForm.region.$error.required && retailerRegForm.$dirty">Region required</p>
+            <p ng-show="retailerRegForm.distributor.$error.required && retailerRegForm.$dirty">Distributor required</p>
+          </div>
+          <button ng-disabled="retailerRegForm.$invalid" class="button button-full custom-dark1 ink"  ng-click="retailerRegistration(retailer,retailerRegForm)">Submit</button>
+        </div>
+      </ng-form>
+    </div>
+  </ion-content>
+</ion-view>
