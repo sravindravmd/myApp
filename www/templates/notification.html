@@ -1,13 +1,21 @@
 <ion-view view-title="Distributor Notification">
     <ion-content ng-class="{expanded:$scope.isExpanded}" style="background-color: white">
-
       <h2 class="has-header">
 
       </h2>
 
     <ion-list>
       <ion-item class="card" ng-repeat="notification in notifications">
-        <h2>{{notification.ADD_DATE}}</h2>
+        <h2 style="background-color: white">{{notification.ADD_DATE}}</h2>
+        <div class="card card-gallery item item-text-wrap">
+          <div class="ink dark-bg">
+            <h2 style="background-color: #a2a2a2">{{notification.NOTI_NAME}}</h2>
+            <img class="full-image" src="{{notification.URL_URL}}">
+          </div>
+          <div class="item" style="background-color: #dddddd">
+            <p class="">{{notification.NOTI_DESC}}</p>
+          </div>
+        </div>
       </ion-item>
     </ion-list>
 
