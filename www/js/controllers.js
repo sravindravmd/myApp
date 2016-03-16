@@ -87,10 +87,13 @@ angular.module('starter.controllers', [])
 })
 
 .controller('HomeCtrl', function($scope, $timeout, $stateParams, ionicMaterialInk, $state) {
-    $scope.$parent.clearFabs();
-    $timeout(function() {
-        $scope.$parent.hideHeader();
-    }, 0);
+  // Set Header
+  $scope.$parent.showHeader();
+  $scope.$parent.clearFabs();
+  $scope.isExpanded = false;
+  $scope.$parent.setExpanded(false);
+  $scope.$parent.setHeaderFab(false);
+
     ionicMaterialInk.displayEffect();
 
   $scope.homeLogin= function () {
@@ -585,6 +588,9 @@ angular.module('starter.controllers', [])
       $scope.feedbackQuery= function () {
         $state.go('app.feedback_query');
       };
+      $scope.dashBoard= function () {
+        $state.go('app.dashboard');
+      };
     })
 
     .controller('notificationCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk,$http,API_ENDPOINT ) {
@@ -928,7 +934,7 @@ angular.module('starter.controllers', [])
     $scope.customerLogin1= function (customer,customerLoginForm) {
       if(customerLoginForm.$valid){
         console.log(customerLoginForm,customer);
-        $state.go('app.dashboard');
+        $state.go('app.channel_partner');
       }
     }
   })

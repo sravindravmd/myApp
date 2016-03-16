@@ -55,7 +55,10 @@
           <label class="item-input margn_top"><input placeholder="Retailer Name" type="text" name="name" ng-model="retailer.name" required/></label>
           <label class="item-input margn_top"><input placeholder="Mobile Number" type="tel" name="mobile" ng-model="retailer.mobile" required/></label>
           <label class="item-input margn_top"><input placeholder="Email Id" type="text" name="email" ng-model="retailer.email" required/></label>
-          <label class="item-input margn_top"><input placeholder="Date of Birth" type="text" name="dateOfBirth" ng-model="retailer.dateOfBirth" required/></label>
+          <label class="item-input margn_top"><input placeholder="Date of Birth" type="text" name="dateOfBirth" ng-model="retailer.dateOfBirth" required/></label><br>
+          <div>
+            <button ng-disabled="retailerRegForm.$invalid" class="button button-full custom-dark1 ink"  ng-click="retailerRegistration(retailer,retailerRegForm)">Submit</button>
+          </div>
           <div ng-show="retailerRegForm.$invalid">
             <p ng-show="retailerRegForm.name.$error.required && retailerRegForm.$dirty">Name required</p>
             <p ng-show="retailerRegForm.mobile.$error.required && retailerRegForm.$dirty">Mobile Number required</p>
@@ -69,7 +72,7 @@
             <p ng-show="retailerRegForm.region.$error.required && retailerRegForm.$dirty">Region required</p>
             <p ng-show="retailerRegForm.distributor.$error.required && retailerRegForm.$dirty">Distributor required</p>
           </div>
-          <button ng-disabled="retailerRegForm.$invalid" class="button button-full custom-dark1 ink"  ng-click="retailerRegistration(retailer,retailerRegForm)">Submit</button>
+
         </div>
       </ng-form>
     </div>

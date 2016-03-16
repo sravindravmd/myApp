@@ -3,7 +3,37 @@
         <div class="tabs tabs-icon-top static">
             <p>Distributor Product Detail</p>
         </div>
-        <div class="list  animate-fade-slide-in-right">
+        <label class="item item-input item-select">
+          <div class="input-label">Product Name</div>
+          <select ng-model="product">
+            <option selected value="A">A</option>
+            <option value="B" >B</option>
+            <option>C</option>
+          </select>
+        </label>
+      <label class="item item-input item-select">
+        <div class="input-label">Product Code/ Description</div>
+        <select ng-model="product">
+          <option selected value="A">A</option>
+          <option value="B" >B</option>
+          <option>C</option>
+        </select>
+      </label>
+        <div class="row card list">
+          <div class="col padding">
+            <p>SKU :</p>
+            <p>UOM :</p>
+            <p>Qty(Number) :</p>
+            <p>Qty(Liters) :</p>
+          </div>
+            <!--<a class="item card item-thumbnail-left">
+                &lt;!&ndash;<img src="img/1.jpg">&ndash;&gt;
+                &lt;!&ndash;<h3>Product Name :</h3>&ndash;&gt;
+                <h3>MRP :</h3>
+                <h3>List Price :</h3>
+                <h3>Discount :</h3>
+                <h3>SKU :</h3>
+            </a>--><!--
             <a class="item card item-thumbnail-left">
                 <img src="img/1.jpg">
                 <h3>Product Name :</h3>
@@ -19,15 +49,7 @@
                 <h3>List Price :</h3>
                 <h3>Discount :</h3>
                 <h3>SKU :</h3>
-            </a>
-            <a class="item card item-thumbnail-left">
-                <img src="img/1.jpg">
-                <h3>Product Name :</h3>
-                <h3>MRP :</h3>
-                <h3>List Price :</h3>
-                <h3>Discount :</h3>
-                <h3>SKU :</h3>
-            </a>
+            </a>-->
         </div>
     </ion-content>
 </ion-view>

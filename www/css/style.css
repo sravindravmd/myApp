@@ -80,7 +80,9 @@ p {
     bottom: 0;
 }
 .login-back{
-    background: url(../img/login.jpg) center; background-size: cover;
+    background: url(../img/11.jpg) center;
+  background-size: 80px 60px;
+  background-repeat: no-repeat;
 }
 
 .menu-icon{
@@ -303,4 +305,7 @@ input[type=radio] {
   border: 0px;
   width: 15%;
   height: 1.2em;
+}
+.lebel_height{
+  padding-top: 10px;
 }
