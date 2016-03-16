@@ -3,7 +3,7 @@ angular.module('starter.services', []).constant('AUTH_EVENTS', {
   })
 
   .constant('API_ENDPOINT', {
-    url: 'http://10.10.10.45/gulf_v1/webservices'
+    url: 'http://10.10.10.48/gulf_v1/webservices'
     //  For a simulator use: url: 'http://127.0.0.1:8080/api'
   })
 

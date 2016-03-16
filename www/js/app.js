@@ -399,6 +399,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
           }
         }
       })
+
+      .state('app.target_details', {
+        url: '/target_details',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/target_details.html'
+            //controller: 'targetDetailsCtrl'
+          }
+        }
+      })
     ;
 
     // if none of the above states are matched, use this as the fallback

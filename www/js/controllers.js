@@ -337,7 +337,7 @@ angular.module('starter.controllers', [])
         $state.go('app.distributor_product_detail');
       };
       $scope.distTarget= function () {
-        $state.go('app.target_os_p');
+        $state.go('app.target_details');
       };
       $scope.notification= function () {
         $state.go('app.notification');
