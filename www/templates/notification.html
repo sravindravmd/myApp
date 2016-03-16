@@ -1,22 +1,31 @@
-<ion-view view-title="Distributor Notification">
+<ion-view view-title="Notification">
     <ion-content ng-class="{expanded:$scope.isExpanded}" style="background-color: white">
       <h2 class="has-header">
 
       </h2>
 
-    <ion-list>
-      <ion-item class="card" ng-repeat="notification in notifications">
+    <ion-list ng-repeat="notification in notifications" class="card">
+      <div class="item item-text-wrap">
+        <h2>{{notification.NOTI_NAME}}</h2>
+        <p>{{notification.ADD_DATE}}</p>
+
+        <img  class="item-image" ng-src="http://cdn.akc.org/akcdoglovers/LabradorRetriever_hero.jpg">
+      <div class="item">
+        <p class="">{{notification.NOTI_DESC}}</p>
+      </div>
+      </div>
+      <!--<ion-item class="card" ng-repeat="notification in notifications">
         <h2 style="background-color: white">{{notification.ADD_DATE}}</h2>
         <div class="card card-gallery item item-text-wrap">
           <div class="ink dark-bg">
             <h2 style="background-color: #a2a2a2">{{notification.NOTI_NAME}}</h2>
-            <img class="full-image" src="{{notification.URL_URL}}">
+            <img class="item-thumbnail-left" ng-src="{{notification.URL_URL}}">
           </div>
           <div class="item" style="background-color: #dddddd">
-            <p class="">{{notification.NOTI_DESC}}</p>
+            <p class="">{{notification.NOTI_DESC}}</p>L
           </div>
         </div>
-      </ion-item>
+      </ion-item>-->
     </ion-list>
 
       <!--  <div class="tabs tabs-icon-top static">

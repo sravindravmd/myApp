@@ -34,15 +34,15 @@
                     <p ng-show="myForm.password.$error.minlength">* Password must be longer than 6 characters</p>
                 </div>-->
           <ng-form name="queryForm" ng-show="choose == 'query'">
-                <div >
+
                   <div class="list list-inset">
                     <label class="item item-input item-floating-label">
                       <span class="input-label">Query Message</span>
-                      <textarea type="tel" placeholder="Message Text" name="message" ng-model="msgText"></textarea>
+                      <textarea type="textarea" placeholder="Message Text" name="message" ng-model="msgText"></textarea>
                     </label>
                   </div>
                     <button class="button button-full custom-dark1 ink" ng-click="submit()">Send</button>
-                </div>
+
           </ng-form>
 
     </ion-content>
