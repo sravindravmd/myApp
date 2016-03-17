@@ -223,7 +223,21 @@ input[type=password]:focus {
     outline: none;
     box-shadow: -8px 10px 0px -7px #cccccc, 8px 10px 0px -7px #cccccc;
 }
-
+input[type=email] {
+  text-align:center;
+  height:20px;
+  border: 0;
+  width: calc(100% - 2px);
+  margin-left:1px;
+  margin-right: 16px;
+  box-shadow: -8px 10px 0px -7px #ff9900, 8px 10px 0px -7px #ff9900;
+  -webkit-transition: box-shadow 0.3s;
+  transition: box-shadow 0.3s;
+}
+input[type=email]:focus {
+  outline: none;
+  box-shadow: -8px 10px 0px -7px #cccccc, 8px 10px 0px -7px #cccccc;
+}
 /*input[type=number] {
     text-align:center;
     height:20px;
@@ -329,4 +343,8 @@ input[type=radio] {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+a:link {
+  text-decoration: none;
 }
