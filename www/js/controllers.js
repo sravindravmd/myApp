@@ -242,7 +242,7 @@ angular.module('starter.controllers', [])
           method: 'POST',
           url: 'http://10.10.10.58/gulf_v1/webservices/services.php/registration',
           headers: {
-            'Content-Type': "application/json"
+            'Content-Type': "application/x-www-form-urlencoded"
           },
           data: formData
         }

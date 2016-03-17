@@ -6,8 +6,10 @@
 
     <ion-list ng-repeat="notification in notifications" class="card">
       <div class="item item-text-wrap">
-        <h2>{{notification.NOTI_NAME}}</h2>
-        <p>{{notification.ADD_DATE}}</p>
+        <div class="row">
+          <div class="col col-50"><h2>{{notification.NOTI_NAME}}</h2></div>
+          <div class="col col-offset-10 col-50"><p>{{notification.ADD_DATE}}</p></div>
+        </div>
 
         <img  class="item-image" ng-src="http://cdn.akc.org/akcdoglovers/LabradorRetriever_hero.jpg">
       <div class="item">
