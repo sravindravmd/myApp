@@ -158,7 +158,7 @@ angular.module('starter.controllers', [])
 
     })
 
-    .controller('RegCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk, $state) {
+    .controller('RegCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk, $state,$http) {
         // Set Header
         $scope.$parent.showHeader();
         $scope.$parent.clearFabs();
@@ -182,13 +182,83 @@ angular.module('starter.controllers', [])
         // Set Ink
         ionicMaterialInk.displayEffect();
 
+      $scope.customer={};
+      $scope.retailer={};
+
+
+      $scope.toggle= function (roleid) {
+
+        if(roleid=='4'){
+          $scope.retailershow=true;
+          $scope.customershow=false;
+        }
+        else{
+          $scope.customershow=true;
+          $scope.retailershow=false;
+        }
+
+      }
+      $http.get('http://10.10.10.58/gulf_v1/webservices/services.php/regionlist').then(function(results){
+       $scope.regions=results.data.regionList;
+     console.log('regions', $scope.regions);
+      }).catch(function (error) {
+        alert('Something went wrong!!!!')
+
+      })
+
+      $scope.changedresion= function (reregion) {
+/*
+        console.log($scope.retailer,$scope.retailer.STATE_PK_ID);
+*/
+        $http.get('http://10.10.10.58/gulf_v1/webservices/services.php/statelist/'+reregion).then(function(results){
+          $scope.states=results.data.States;
+          console.log('sates for region',  $scope.states);
+        })
+      }
+
+      $scope.changedstate= function (state) {
+        console.log('sates for cites',state)
+        $http.get('http://10.10.10.58/gulf_v1/webservices/services.php/citylist/'+state).then(function(results){
+          $scope.cities=results.data.cities;
+          console.log('cities',  $scope.cities);
+        })
+      }
+
+      $scope.changedcity= function (city) {
+        console.log('city for distributor',city)
+        $http.get('http://10.10.10.58/gulf_v1/webservices/services.php/distributerlist/'+0).then(function(results){
+          $scope.distributers=results.data.Distributers;
+          console.log('distributers', $scope.distributers);
+        })
+      }
+
       $scope.retailerRegistration= function (retailer,retailerRegForm) {
 
-        if(retailerRegForm.$valid){
-          console.log(retailerRegForm,retailer);
+        if(retailerRegForm.$valid)
+
+         var formData=JSON.stringify(retailer);
+
+        var req = {
+          method: 'POST',
+          url: 'http://10.10.10.58/gulf_v1/webservices/services.php/registration',
+          headers: {
+            'Content-Type': undefined
+          },
+          data: formData
+        }
+
+        $http.post(req).then(function (result) {
+          console.log('succcss',result);
+
+        }).catch(function (error) {
+          console.log('failed',error);
+
+        })
+
+          console.log('reatiler form',retailer);
           $state.go('app.login');
         }
-      }
+
       $scope.customerRegistration= function (customer,customerRegForm) {
 
         if(customerRegForm.$valid){
@@ -233,7 +303,7 @@ angular.module('starter.controllers', [])
 
     })
 
-    .controller('DistRegCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+/*    .controller('DistRegCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
         // Set Header
         $scope.$parent.showHeader();
         $scope.$parent.clearFabs();
@@ -281,7 +351,7 @@ angular.module('starter.controllers', [])
 
         // Set Ink
         ionicMaterialInk.displayEffect();
-    })
+    })*/
 
     .controller('DistResetPassCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
         // Set Header
