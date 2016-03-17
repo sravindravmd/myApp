@@ -1216,4 +1216,43 @@ angular.module('starter.controllers', [])
             option1: 'option-1',
         };
     }])
+  .controller('brandvideoCtrl', function ($scope,$http) {
+
+ /*    $scope.videos = [
+     {
+     title: "My first video",
+     date: "1-1-2015",
+     thumbnails: "http://i.ytimg.com/vi/bJp1ptX4F3M/maxresdefault.jpg",
+     },
+     {
+     title: "My second video",
+     date: "5-7-2015",
+     thumbnails: "http://i.ytimg.com/vi/NA2VerbOyt0/maxresdefault.jpg",
+     }
+     ]*/
+
+    $scope.playerVars = {
+      rel: 0,
+      showinfo: 0,
+      modestbranding: 0,
+    }
+    $scope.anotherGoodOne = 'https://www.youtube.com/watch?v=18-xvIjH8T4';
+   /* $scope.videos = [];
+    $scope.youtubeParams = {
+      key: 'AIzaSyAnAi9xKNqI_xNGDKHtFZrInz5l_QkMqNs',
+      type: 'video',
+      maxResults: '5',
+      part: 'id,snippet',
+      q: 'creatorup',
+      order: 'date',
+      channelId: 'UCeEqIv7lVwOOLnwxuuhQFuQ',
+    }*/
+   /* $http.get('https://www.googleapis.com/youtube/v3/search', {params:$scope.youtubeParams}).success(function(response){
+      angular.forEach(response.items, function(child){
+        console.log (child);
+
+        $scope.videos.push(child);
+      });
+    });*/
+  })
 ;
