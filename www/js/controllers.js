@@ -2,6 +2,26 @@
 'use strict';
 
 angular.module('starter.controllers', [])
+  .factory('userinfoService',function(){
+
+    var user={};
+    return{
+
+
+      setUserinfo:function(data){
+        user.otp=data.users.otp;
+        user.userId=data.users.userId;
+
+        console.log('setting userinfo',user)
+      },
+
+      getUserInfo: function () {
+
+        return user;
+
+      }
+    }
+  })
 
 .controller('AppCtrl', function($scope, $ionicModal, $ionicPopover, $timeout) {
     // Form data for the login modal
@@ -158,7 +178,7 @@ angular.module('starter.controllers', [])
 
     })
 
-    .controller('RegCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk, $state,$http) {
+    .controller('RegCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk, $state,$http,userinfoService) {
         // Set Header
         $scope.$parent.showHeader();
         $scope.$parent.clearFabs();
@@ -184,6 +204,7 @@ angular.module('starter.controllers', [])
 
       $scope.customer={};
       $scope.retailer={};
+      $scope.regsuccess=false;
 
 
       $scope.toggle= function (roleid) {
@@ -235,28 +256,39 @@ angular.module('starter.controllers', [])
       $scope.retailerRegistration= function (retailer,retailerRegForm) {
 
         if(retailerRegForm.$valid)
-
-         var formData=JSON.stringify(retailer);
-
-        var req = {
-          method: 'POST',
-          url: 'http://10.10.10.58/gulf_v1/webservices/services.php/registration',
+          console.log('retailer',retailer);
+        console.log('reatiler form',retailer);
+        $http({
+          method:'POST',
+          url:'http://10.10.10.58/gulf_v1/webservices/services.php/registration',
           headers: {
             'Content-Type': "application/x-www-form-urlencoded"
           },
-          data: formData
-        }
+          data:'city='+retailer.city+'&distributor='+retailer.distributor+'&dob='+'12/12/1090'+'&email='+retailer.email+'&fname='+retailer.fname+'&mobile='+retailer.mobile+'&region='+retailer.region+'&roleid='+retailer.roleid+'&state='+retailer.state+'&firmname='+retailer.firmname
 
-        $http.post(req).then(function (result) {
-          console.log('succcss',result);
+          /*'city='+'12'+'&distributor='+'16'+'&dob='+'12/12/1091'+'&email='+'g@rg.com'+
+          '&fname='+'13'+'&mobile='+'4213432499'+'&region='+'3'+'&roleid='+'4'+
+          '&state='+'13'+'&firmname='+'abc'*/
+        }).success(function (data, status, headers, config) {
 
-        }).catch(function (error) {
-          console.log('failed',error);
 
+          $scope.regsuccess=true;
+          console.log(data, status, headers, config)
+
+            $timeout(callAtTimeout, 3000);
+
+          console.log(success.users)})
+          .error(function(data, status, headers, config){
+          console.log(data, status, headers, config)
         })
 
-          console.log('reatiler form',retailer);
+        function callAtTimeout() {
+          console.log("Timeout occurred");
           $state.go('app.login');
+        }
+
+
+        // $state.go('app.login');
         }
 
       $scope.customerRegistration= function (customer,customerRegForm) {
@@ -270,14 +302,22 @@ angular.module('starter.controllers', [])
               'Content-Type': "application/x-www-form-urlencoded"
             },
             data:'fname='+customer.fname+'&mobile='+customer.mobile+'&roleid='+customer.roleid
-          }).then(function (success) {
-
-            console.log(success)
-
+          }).success(function (data, status, headers, config) {
+            userinfoService.setUserinfo(data);
+            $scope.regsuccess=true;
+           $timeout(callAtTimeout, 3000);
+            console.log(data, status, headers, config)  }).error(function(data, status, headers, config){
+            console.log(data, status, headers, config)
           })
-          $state.go('app.login');
+
+
         }
       }
+      function callAtTimeout() {
+        console.log("Timeout occurred");
+        $state.go('app.login');
+      }
+
     })
     .controller('DistLoginCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk, $state,$ionicHistory) {
         // Set eader
