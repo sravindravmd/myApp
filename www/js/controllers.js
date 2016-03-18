@@ -4,9 +4,22 @@
 angular.module('starter.controllers', [])
   .factory('userinfoService',function(){
     var role={};
+
+
+
     var user={};
     return{
+      setRoleInfo:function(roleid){
+        role.roleid=roleid;
 
+        console.log('setting roleid',role)
+      },
+
+      getRoleInfo: function () {
+
+        return role;
+
+      },
 
       setUserinfo:function(data){
         user.otp=data.users.otp;
@@ -271,7 +284,7 @@ angular.module('starter.controllers', [])
           '&state='+'13'+'&firmname='+'abc'*/
         }).success(function (data, status, headers, config) {
 
-
+          userinfoService.setRoleInfo(retailer.roleid);
           $scope.regsuccess=true;
           console.log(data, status, headers, config)
 
