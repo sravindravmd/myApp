@@ -3,7 +3,7 @@
 
 angular.module('starter.controllers', [])
   .factory('userinfoService',function(){
-
+    var role={};
     var user={};
     return{
 
@@ -264,7 +264,7 @@ angular.module('starter.controllers', [])
           headers: {
             'Content-Type': "application/x-www-form-urlencoded"
           },
-          data:'city='+retailer.city+'&distributor='+retailer.distributor+'&dob='+'12/12/1090'+'&email='+retailer.email+'&fname='+retailer.fname+'&mobile='+retailer.mobile+'&region='+retailer.region+'&roleid='+retailer.roleid+'&state='+retailer.state+'&firmname='+retailer.firmname
+          data:'city='+retailer.city+'&distributor='+retailer.distributor+'&dob='+'12/12/2090'+'&email='+retailer.email+'&fname='+retailer.fname+'&mobile='+retailer.mobile+'&region='+retailer.region+'&roleid='+retailer.roleid+'&state='+retailer.state+'&firmname='+retailer.firmname
 
           /*'city='+'12'+'&distributor='+'16'+'&dob='+'12/12/1091'+'&email='+'g@rg.com'+
           '&fname='+'13'+'&mobile='+'4213432499'+'&region='+'3'+'&roleid='+'4'+
