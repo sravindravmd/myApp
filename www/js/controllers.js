@@ -901,7 +901,7 @@ angular.module('starter.controllers', [])
 
         console.log(result.data);
         $scope.brandstory=result.data.brandstory;
-
+  
       });
     })
 
