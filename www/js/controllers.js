@@ -1325,4 +1325,10 @@ angular.module('starter.controllers', [])
       });
     });*/
   })
+
+  .controller('brandaudioCtrl', function ($scope) {
+
+
+  })
+
 ;

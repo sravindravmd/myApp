@@ -80,7 +80,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
             }
         })
 
-        .state('app.distributor_Reg', {
+       /* .state('app.distributor_Reg', {
             url: '/distributor_Reg',
             views: {
                 'menuContent': {
@@ -88,7 +88,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
                     controller: 'DistRegCtrl'
                 }
             }
-        })
+        })*/
 
         .state('app.retailer_Reg', {
             url: '/retailer_Reg',
@@ -275,6 +275,33 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
           'menuContent': {
             templateUrl: 'templates/brand_video.html',
             controller: 'brandvideoCtrl'
+          }
+        }
+      })
+      .state('app.brand_audio', {
+        url: '/brand_audio',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/brand_audio.html',
+            controller: 'brandaudioCtrl'
+          }
+        }
+      })
+      .state('app.brand_image', {
+        url: '/brand_image',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/brand_image.html',
+            //controller: 'brandimageCtrl'
+          }
+        }
+      })
+      .state('app.brand_pdf', {
+        url: '/brand_pdf',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/brand_pdf.html',
+            //controller: 'brandpdfCtrl'
           }
         }
       })

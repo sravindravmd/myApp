@@ -65,23 +65,24 @@ p {
 ==================================*/
 .app-icon {
     background-color: #fff;
-    background: url('../img/2.jpg') center;
+    background: url('../img/logo.png') center;
     background-size: 240px 60px;
     background-repeat: no-repeat;
     /*background-size: cover;*/
     /*border-radius: 50%;*/
     height: 125px;
     margin: 0 auto;
-    width: 230px;
+    width: 240px;
+    /*margin-top: 185px;*/
 }
 
 .social-login {
     position: fixed;
     bottom: 0;
 }
-.login-back{
-    background: url(../img/11.jpg) center;
-  background-size: 80px 60px;
+.home-back{
+    background: url(../img/006.png) center;
+  /*background-size: 80px 60px;*/
   background-repeat: no-repeat;
 }
 
@@ -363,3 +364,11 @@ input[type=radio] {
 a:link {
   text-decoration: none;
 }
+.padding_top{
+  padding-top: 90px;
+}
+.back_color1{
+  background-color: #f2f2f2;
+}
+
+    /*audio*/
