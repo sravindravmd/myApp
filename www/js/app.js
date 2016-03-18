@@ -344,7 +344,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
           }
         }
       })
-
+      .state('app.otp', {
+        url: '/otp',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/otp.html',
+            controller: 'otpCtrl'
+          }
+        }
+      })
+      .state('app.create_password', {
+        url: '/create_password',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/create_password.html',
+            controller: 'CreatePasswordCtrl'
+          }
+        }
+      })
       .state('app.retailer_login', {
         url: '/retailer_login',
         views: {

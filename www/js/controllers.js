@@ -4,12 +4,10 @@
 angular.module('starter.controllers', [])
   .factory('userinfoService',function(){
     var role={};
-
-
-
     var user={};
     return{
       setRoleInfo:function(roleid){
+      //  role.roleid=roleid;
         role.roleid=roleid;
 
         console.log('setting roleid',role)
@@ -22,8 +20,9 @@ angular.module('starter.controllers', [])
       },
 
       setUserinfo:function(data){
-        user.otp=data.users.otp;
+      user.otp=data.users.otp;
         user.userId=data.users.userId;
+        user.mobile=9448085230
 
         console.log('setting userinfo',user)
       },
@@ -297,7 +296,7 @@ angular.module('starter.controllers', [])
 
         function callAtTimeout() {
           console.log("Timeout occurred");
-          $state.go('app.login');
+          $state.go('app.otp');
         }
 
 
@@ -308,18 +307,20 @@ angular.module('starter.controllers', [])
 
         if(customerRegForm.$valid){
           console.log("eneted in customer registration",customer);
+          userinfoService.setRoleInfo(customer.roleid)
           $http({
             method:'POST',
             url:'http://10.10.10.58/gulf_v1/webservices/services.php/registration',
             headers: {
-              'Content-Type': "application/x-www-form-urlencoded"
+              'Content-Type': 'application/x-www-form-urlencoded'
             },
             data:'fname='+customer.fname+'&mobile='+customer.mobile+'&roleid='+customer.roleid
           }).success(function (data, status, headers, config) {
             userinfoService.setUserinfo(data);
             $scope.regsuccess=true;
            $timeout(callAtTimeout, 3000);
-            console.log(data, status, headers, config)  }).error(function(data, status, headers, config){
+            console.log(data, status, headers, config)  })
+            .error(function(data, status, headers, config){
             console.log(data, status, headers, config)
           })
 
@@ -328,7 +329,7 @@ angular.module('starter.controllers', [])
       }
       function callAtTimeout() {
         console.log("Timeout occurred");
-        $state.go('app.login');
+        $state.go('app.otp');
       }
 
     })
@@ -914,7 +915,7 @@ angular.module('starter.controllers', [])
         ionicMaterialInk.displayEffect();
     })
 
-    .controller('ForgotPasswordCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+    .controller('ForgotPasswordCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk,$http) {
         // Set Header
         $scope.$parent.showHeader();
         $scope.$parent.clearFabs();
@@ -937,6 +938,29 @@ angular.module('starter.controllers', [])
 
         // Set Ink
         ionicMaterialInk.displayEffect();
+
+
+      $scope.forgotpass=function(mobile){
+        $http({
+          method:'POST',
+          url:'http://10.10.10.58/gulf_v1/webservices/services.php/forgotpassword/'+mobile,
+          headers: {
+            'Content-Type': "application/x-www-form-urlencoded"
+          }
+
+        }).then(function (data) {
+
+          $scope.userinfo=data.data.users;
+          console.log(data);
+          $scope.message=data.data.Message;
+
+          alert(data);
+          // 'new_password='+createpass.password+'&confirm_password='+createpass.conPassword
+
+        })
+
+
+      }
     })
 
     .controller('brandStoriesCtrl', function($http,$scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk,brandstoryService,API_ENDPOINT) {
@@ -1391,7 +1415,66 @@ angular.module('starter.controllers', [])
     });*/
   })
 
-  .controller('brandaudioCtrl', function ($scope) {
+  .controller('brandaudioCtrl', function ($scope,$http) {
+
+
+  })
+  .controller('otpCtrl', function ($scope,$http,$state,userinfoService) {
+
+    $scope.verifyotp= function (otp) {
+     var userId= userinfoService.getUserInfo().userId;
+     console.log('userId',userinfoService.getUserInfo().userId);
+
+      $http.get('http://10.10.10.58/gulf_v1/webservices/services.php/verifyOTP/'+userId+'/'+otp).then(function (data) {
+
+        console.log(data.data.otpStatus);
+
+        if(data.data.otpStatus.status==2){
+          alert(data.data.otpStatus.message+" "+"Please regenerate");
+        } else if(data.data.otpStatus.status==1){
+          alert(data.data.otpStatus.message+" "+"Please regenerate");
+        } else if(data.data.otpStatus.status==3){
+          $state.go('app.create_password')
+        } else if(data.data.otpStatus.status==0){
+          alert(data.data.otpStatus.message+" "+"Please regenerate");
+        }
+      /*  if("OTP Expired"==data.otpStatus.status){
+          alert(data.otpStatus.status);
+        }
+        alert('failed');
+*/
+
+      }).catch(function (error) {
+
+      })
+
+    }
+
+  })
+  .controller('CreatePasswordCtrl', function ($scope,$http,userinfoService,$state) {
+
+    $scope.createNewPassword= function (createpass ,createPassForm) {
+      var userId= userinfoService.getUserInfo().userId;
+      $http({
+        method:'POST',
+        url:'http://10.10.10.58/gulf_v1/webservices/services.php/firstusercredential',
+        headers: {
+          'Content-Type': "application/x-www-form-urlencoded"
+        },
+        data:'new_password='+createpass.password+'&confirm_password='+createpass.conPassword+'&userId='+userId
+
+      }).then(function (data) {
+        alert(data);
+        var roleId=userinfoService.getRoleInfo().roleid;
+        if(roleId=5){
+          $state.go('app.channel_partner');
+        }
+
+        // 'new_password='+createpass.password+'&confirm_password='+createpass.conPassword
+
+      })
+
+    }
 
 
   })
