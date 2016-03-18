@@ -262,7 +262,19 @@ angular.module('starter.controllers', [])
       $scope.customerRegistration= function (customer,customerRegForm) {
 
         if(customerRegForm.$valid){
-          console.log(customerRegForm,customer);
+          console.log("eneted in customer registration",customer);
+          $http({
+            method:'POST',
+            url:'http://10.10.10.58/gulf_v1/webservices/services.php/registration',
+            headers: {
+              'Content-Type': "application/x-www-form-urlencoded"
+            },
+            data:'fname='+customer.fname+'&mobile='+customer.mobile+'&roleid='+customer.roleid
+          }).then(function (success) {
+
+            console.log(success)
+
+          })
           $state.go('app.login');
         }
       }
