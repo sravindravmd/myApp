@@ -529,7 +529,7 @@ angular.module('starter.controllers', [])
         ionicMaterialInk.displayEffect();
     })
 
-    .controller('DistProductDetailCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+    .controller('DistProductDetailCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk, $http) {
         // Set Header
         $scope.$parent.showHeader();
         $scope.$parent.clearFabs();
@@ -552,6 +552,31 @@ angular.module('starter.controllers', [])
 
         // Set Ink
         ionicMaterialInk.displayEffect();
+
+      $http.get('http://10.10.10.58/gulf_v1/webservices/services.php/segmentlist/0/0').then(function(results){
+        $scope.productsegments=results.data.segmentlist;
+        console.log('Product Segmet Details', $scope.productsegments);
+      }).catch(function (error) {
+        alert('Something went wrong!!!!')
+      })
+
+      $scope.segmentDetail= function (productsegment) {
+       $http.get('http://10.10.10.58/gulf_v1/webservices/services.php/productlist/1/0/0',+productsegment).then(function(results){
+       $scope.products=results.data.productlist;
+       console.log('Product List',  $scope.products);
+       })
+       }
+$scope.productDetail= function (product) {
+
+  $scope.checked=true
+  $scope.selectedproduct=product;
+  console.log('selectedproduct',$scope.selectedproduct);
+
+}
+      /*$scope.bikeDetails=results.data[0];
+      console.log('bikeDetails',results);
+      console.log('indoi',results.data[0]);*/
+
     })
 
     .controller('DistOrderCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk, $state) {
@@ -1488,12 +1513,27 @@ angular.module('starter.controllers', [])
         }
 
         // 'new_password='+createpass.password+'&confirm_password='+createpass.conPassword
-
       })
-
     }
+  })
 
+  .controller('chooseChampionCtrl', function ($scope, $http) {
 
+    $http.get('http://10.10.10.58/gulf_v1/webservices/services.php/recommendationbikes').then(function(results){
+      $scope.bikes=results.data.Bikes;
+      console.log('bikes', $scope.bikes);
+    }).catch(function (error) {
+      alert('Something went wrong!!!!')
+    })
+    //$scope.choosebike= function () {}
+    $scope.choosebike= function (bike) {
+      console.log('choosed bike',bike)
+     $http.get('http://10.10.10.58/gulf_v1/webservices/services.php/recommendationbikesrecom/'+bike).then(function(results){
+        $scope.bikeDetails=results.data[0];
+        console.log('bikeDetails',results);
+       console.log('indoi',results.data[0]);
+      })
+    }
   })
 
 ;

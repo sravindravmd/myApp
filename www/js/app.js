@@ -437,7 +437,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
         views: {
           'menuContent': {
             templateUrl: 'templates/choose_champion.html',
-            //controller: 'chooseChampionCtrl'
+            controller: 'chooseChampionCtrl'
           }
         }
       })

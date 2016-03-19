@@ -1,38 +1,132 @@
 <ion-view view-title="Login" align-title="left">
-    <ion-content class="back_color1">
-        <div class="hero no-header flat">
-            <div class="app-icon padding"></div>
-            <div class="content"></div>
-                <!--<label class="item item-input item-select">
-                    <div class="input-label">Login Type</div>
-                    <select>
-                        <option selected>Distributor</option>
-                        <option> Retailer</option>
-                        <option> Customer</option>
-                        <option> Sales Manager_L1</option>
-                        <option> Sales Manager_L2</option>
-                        <option> Sales Manager_L3</option>
-                    </select>
-                </label>-->
+  <ion-content class="back_color1">
+    <div class="hero no-header flat">
+      <div class="app-icon padding"></div>
+      <div class="content"></div>
+      <!--<label class="item item-input item-select">
+          <div class="input-label">Login Type</div>
+          <select>
+              <option selected>Distributor</option>
+              <option> Retailer</option>
+              <option> Customer</option>
+              <option> Sales Manager_L1</option>
+              <option> Sales Manager_L2</option>
+              <option> Sales Manager_L3</option>
+          </select>
+      </label>-->
+      <div class="row">
+        <div class="col col-offset-10 col-30 font_color" style="text-align: left"><input type="radio" id="dist" style="background-color: black" name="reading" value="distributor" ng-model="choose" checked />
+          <label for="dist" class="lebel_height">Distributor</label>
+        </div>
+        <div class="col  col-30 font_color" style="text-align: left"><input type="radio" id="retal" name="reading" value="retailer" ng-model="choose" />
+          <label for="retal">Retailer</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-offset-10 col-30 font_color" style="text-align: left"><input type="radio" id="cust" style="background-color: black" name="reading" value="customer" ng-model="choose"  />
+          <label for="cust">Customer</label>
+        </div>
+        <div class="col  col-30 font_color" style="text-align: left"><input type="radio" id="saleL1" name="reading" value="manager_L1" ng-model="choose" />
+          <label for="saleL1">Sales Manager_L1</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-offset-10 col-30 font_color"  style="text-align: left" ><input type="radio" id="saleL2" name="reading" value="manager_L2" ng-model="choose" />
+          <label for="saleL2">Sales Manager_L2</label>
+        </div>
+        <div class="col  col-30 font_color"  style="text-align: left"><input type="radio" id="saleL3" name="reading" value="manager_L3" ng-model="choose" />
+          <label for="saleL3">Sales Manager_L3</label>
+        </div>
+      </div>
+    </div>
+    <ng-form name="distributorForm" ng-show="choose == 'distributor'"><div >
+      <div class="list padding">
+        <label class="item-input margn_top1"><input type="tel" placeholder="Mobile Number" name="mobilenumber" ng-model="distributor.mobilenumber" ng-minlength="10" ng-maxlength="10" required/></label>
+        <!--<label class="item-input margn_top"><input placeholder="Password" ng-model="password" type="password" value=""/></label>-->
+        <!--<a ui-sref="app.forgot_password" class="col text-right font_color" style="color: white">Forgot Password</a>--><br>
+        <button ng-disabled="distributorForm.$invalid" class="button button-full custom-dark1 ink"  ng-click="distributorLogin(distributor,distributorForm)">Next</button>
+      </div>
+    </div>
+      <div style="text-align: center">
+        <div ng-show="distributorForm.mobilenumber.$error.required && distributorForm.$dirty">
+          <p>Phone number required</p>
+        </div>
+      </div>
+    </ng-form>
+    <ng-form name="retailerForm" ng-show="choose == 'retailer'">
 
-             </div>
+      <div class="list padding">
+        <label class="item-input margn_top1"><input type="text" placeholder="User Name" name="userName" ng-model="retailer.userName" required/></label>
+        <label class="item-input margn_top"><input type="password" placeholder="Password" name="password" ng-model="retailer.password"  required/></label>
+        <a ng-click="forgotPassword()" class="col text-right font_color" style="color: white">Forgot Password</a>
+        <button ng-disabled="retailerForm.$invalid" class="button button-full custom-dark1 ink"  ng-click="retailerLogin(retailer,retailerForm)">Login</button>
 
-                <form name="loginForm">
-                    <div class="list padding">
-                      <label class="item-input margn_top1"><input type="text" placeholder="Mobile Number" name="mobile" ng-model="mobile" ng-minlength="10" ng-maxlength="10" required/></label>
-                      <label class="item-input margn_top"><input type="password" placeholder="Password" name="password" ng-model="password"  required/></label>
-                      <a ng-click="forgotPassword()" class="col text-right font_color" style="color: white">Forgot Password</a>
-                      <button ng-disabled="loginForm.$invalid" class="button button-full custom-dark1 ink"  ng-click="login(login,loginForm)">Login</button>
-                    </div>
-                  <div style="text-align: center">
-                  <div ng-show="loginForm.$invalid">
-                    <p ng-show="loginForm.mobile.$error.required && loginForm.$dirty">Mobile Number required</p>
-                    <p ng-show="loginForm.password.$error.required && loginForm.$dirty">Password required</p>
-                  </div>
-                    </div>
-                </form>
+      </div>
+      <div style="text-align: center">
+        <div ng-show="retailerForm.$invalid">
+          <p ng-show="retailerForm.userName.$error.required && retailerForm.$dirty">User name required</p>
+          <p ng-show="retailerForm.password.$error.required && retailerForm.$dirty">Password required</p>
+        </div>
+      </div>
+    </ng-form>
+    <ng-form ng-show="choose == 'customer'" name="customerForm">
 
+      <div class="list padding">
+        <label class="item-input margn_top1"><input type="text" placeholder="Mobile Number" name="mobile" ng-model="customer.mobile" ng-minlength="10" ng-maxlength="10" required/></label>
+        <label class="item-input margn_top"><input type="password" placeholder="Password" name="password" ng-model="customer.password"  required/></label>
+        <a ng-click="forgotPassword()" class="col text-right font_color" style="color: white">Forgot Password</a>
+        <button ng-disabled="customerForm.$invalid" class="button button-full custom-dark1 ink"  ng-click="customerLogin(customer,customerForm)">Login</button>
+      </div>
+      <div style="text-align: center">
+        <div ng-show="customerForm.$invalid">
+          <p ng-show="customerForm.mobile.$error.required && customerForm.$dirty">Mobile Number required</p>
+          <p ng-show="customerForm.password.$error.required && customerForm.$dirty">Password required</p>
+        </div>
+      </div>
+    </ng-form>
+    <ng-form ng-show="choose == 'manager_L1'" name="manager_L1Form">
 
+      <div class="list padding">
+        <label class="item-input margn_top1"><input type="text" placeholder="User Name" name="userName" ng-model="manager_L1.userName" required/></label>
+        <label class="item-input margn_top"><input type="password" placeholder="Password" name="password" ng-model="manager_L1.password"  required/></label><br>
+        <button ng-disabled="manager_L1Form.$invalid" class="button button-full custom-dark1 ink"  ng-click="managerL1Login(managerl1 ,manager_L1Form)">Next</button>
+      </div>
 
-    </ion-content>
+      <div style="text-align: center">
+        <div ng-show="manager_L1Form.$invalid">
+          <p ng-show="manager_L1Form.userName.$error.required && manager_L1Form.$dirty">User name required</p>
+          <p ng-show="manager_L1Form.password.$error.required && manager_L1Form.$dirty">Password required</p>
+        </div>
+      </div>
+    </ng-form>
+    <ng-form ng-show="choose == 'manager_L2'" name="manager_L2Form">
+
+      <div class="list padding">
+        <label class="item-input margn_top1"><input type="text" placeholder="User Name" name="userName" ng-model="manager_L2.userName" required/></label>
+        <label class="item-input margn_top"><input type="password" placeholder="Password" name="password" ng-model="manager_L2.password"  required/></label><br>
+        <button ng-disabled="manager_L2Form.$invalid" class="button button-full custom-dark1 ink" ng-click="managerL2Login(managerl2 ,manager_L2Form)">Next</button>
+
+      </div>
+      <div style="text-align: center">
+        <div ng-show="manager_L2Form.$invalid">
+          <p ng-show="manager_L2Form.mobile.$error.required && manager_L2Form.$dirty">* Check Mobile Number Already Registered</p>
+        </div>
+      </div>
+    </ng-form>
+    <ng-form ng-show="choose == 'manager_L3'" name="manager_L3Form">
+
+      <div class="list padding">
+        <label class="item-input margn_top1"><input type="text" placeholder="User Name" name="userName" ng-model="manager_L3.userName" required/></label>
+        <label class="item-input margn_top"><input type="password" placeholder="Password" name="password" ng-model="manager_L3.password"  required/></label><br>
+        <button ng-disabled="manager_L3Form.$invalid" class="button button-full custom-dark1 ink" ng-click="managerL3Login(managerl3 ,manager_L3Form)">Next</button>
+      </div>
+
+      <div style="text-align: center">
+        <div ng-show="manager_L3Form.$invalid">
+          <p ng-show="manager_L3Form.mobile.$error.required && manager_L3Form.$dirty">* Check Mobile Number Already Registered</p>
+        </div>
+      </div>
+    </ng-form>
+
+  </ion-content>
 </ion-view>
