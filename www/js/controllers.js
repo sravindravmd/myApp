@@ -9,7 +9,6 @@ angular.module('starter.controllers', [])
       setRoleInfo:function(roleid){
       //  role.roleid=roleid;
         role.roleid=roleid;
-
         console.log('setting roleid',role)
       },
 
@@ -19,10 +18,18 @@ angular.module('starter.controllers', [])
 
       },
 
+      setUsermobile: function (mobile) {
+
+        user.mobile=mobile;
+        console.log('setting mobile',mobile)
+      },
+      getUsermobile: function () {
+
+        return user.mobile;
+      },
       setUserinfo:function(data){
       user.otp=data.users.otp;
         user.userId=data.users.userId;
-        user.mobile=9448085230
 
         console.log('setting userinfo',user)
       },
@@ -284,12 +291,14 @@ angular.module('starter.controllers', [])
         }).success(function (data, status, headers, config) {
 
           userinfoService.setRoleInfo(retailer.roleid);
+          userinfoService.setUsermobile(retailer.mobile)
+          userinfoService.setUserinfo(data);
           $scope.regsuccess=true;
-          console.log(data, status, headers, config)
+          console.log('registration data for retailer',data)
 
             $timeout(callAtTimeout, 3000);
-
-          console.log(success.users)})
+          //console.log(success.users)
+        })
           .error(function(data, status, headers, config){
           console.log(data, status, headers, config)
         })
@@ -1421,9 +1430,14 @@ angular.module('starter.controllers', [])
   })
   .controller('otpCtrl', function ($scope,$http,$state,userinfoService) {
 
+    $scope.userOtp="Use OTP: "+userinfoService.getUserInfo().otp
+
+    console.log("getting otp:",userinfoService.getUserInfo());
+
     $scope.verifyotp= function (otp) {
      var userId= userinfoService.getUserInfo().userId;
      console.log('userId',userinfoService.getUserInfo().userId);
+
 
       $http.get('http://10.10.10.58/gulf_v1/webservices/services.php/verifyOTP/'+userId+'/'+otp).then(function (data) {
 
@@ -1460,14 +1474,17 @@ angular.module('starter.controllers', [])
         url:'http://10.10.10.58/gulf_v1/webservices/services.php/firstusercredential',
         headers: {
           'Content-Type': "application/x-www-form-urlencoded"
+
         },
         data:'new_password='+createpass.password+'&confirm_password='+createpass.conPassword+'&userId='+userId
 
       }).then(function (data) {
         alert(data);
         var roleId=userinfoService.getRoleInfo().roleid;
-        if(roleId=5){
+        if(roleId==5){
           $state.go('app.channel_partner');
+        } else if(roleId==4){
+          $state.go('app.retailer_home');
         }
 
         // 'new_password='+createpass.password+'&confirm_password='+createpass.conPassword
