@@ -20,9 +20,10 @@
                 <form name="loginForm">
                     <div class="list padding">
                       <label class="item-input margn_top1"><input type="text" placeholder="Mobile Number" name="mobile" ng-model="mobile" ng-minlength="10" ng-maxlength="10" required/></label>
-                      <label class="item-input margn_top"><input type="password" placeholder="Password" name="password" ng-model="password"  required/></label>
-                      <a ng-click="forgotPassword()" class="col text-right font_color" style="color: white">Forgot Password</a>
-                      <button ng-disabled="loginForm.$invalid" class="button button-full custom-dark1 ink"  ng-click="login(login,loginForm)">Login</button>
+                      <label class="item-input margn_top" ng-if="!firsttime"><input type="password" placeholder="Password" name="password" ng-model="password"  required/></label>
+                      <a ng-click="forgotPassword()" ng-if="!firsttime" class="col text-right font_color" style="color: white">Forgot Password</a>
+                      <button ng-disabled="loginForm.$invalid" class="button button-full custom-dark1 ink"  ng-if="firsttime" ng-click="checkuser(mobile)">Check Number</button>
+                      <button ng-disabled="loginForm.$invalid" ng-if="!firsttime" class="button button-full custom-dark1 ink"  ng-click="userlogin(mobile,password)">Login</button>
                     </div>
                   <div style="text-align: center">
                   <div ng-show="loginForm.$invalid">

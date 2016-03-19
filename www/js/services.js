@@ -13,7 +13,7 @@ angular.module('starter.services', []).constant('AUTH_EVENTS', {
 })
 
 
-.service('AuthService', function($q, $http, API_ENDPOINT) {
+/*.service('AuthService', function($q, $http, API_ENDPOINT) {
   var LOCAL_TOKEN_KEY = 'yourTokenKey';
   var isAuthenticated = false;
   var authToken;
@@ -82,8 +82,9 @@ angular.module('starter.services', []).constant('AUTH_EVENTS', {
     logout: logout,
     isAuthenticated: function() {return isAuthenticated;},
   };
-})
+})*/
 
+/*
   .factory('AuthInterceptor', function ($rootScope, $q, AUTH_EVENTS) {
     return {
       responseError: function (response) {
@@ -98,4 +99,5 @@ angular.module('starter.services', []).constant('AUTH_EVENTS', {
   .config(function ($httpProvider) {
     $httpProvider.interceptors.push('AuthInterceptor');
   });
+*/
 
