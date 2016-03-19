@@ -144,10 +144,7 @@ angular.module('starter.controllers', [])
   $scope.homeCustomerLogin= function () {
     $state.go('app.customer_login');
   }
-})
-
-
-    .controller('LoginCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk,$state) {
+}).controller('LoginCtrl', function($scope, $stateParams, $timeout, $http,ionicMaterialMotion, ionicMaterialInk,$state,API_ENDPOINT,userinfoService) {
         // Set Header
         $scope.$parent.showHeader();
         $scope.$parent.clearFabs();
@@ -170,6 +167,51 @@ angular.module('starter.controllers', [])
 
         // Set Ink
         ionicMaterialInk.displayEffect();
+    $scope.firsttime=true;
+
+      $scope.checkuser= function (mobile) {
+
+        $http.get(API_ENDPOINT.url+'/services.php/firstuserlogin/'+mobile).then(function (data) {
+
+          console.log('First login',data.data.Message.isfrstLogin);
+          $scope.message=data.data.Message;
+
+          if(data.data.Message.isfrstLogin==0){
+            $scope.firsttime=true;
+
+            $http({
+              method:'POST',
+              url:API_ENDPOINT.url+'/services.php/forgotpassword/'+mobile,
+              headers: {
+                'Content-Type': "application/x-www-form-urlencoded"
+              }
+
+            }).success(function (data) {
+              console.log(data);
+              userinfoService.setUserinfo(data);
+              userinfoService.setUsermobile(mobile);
+
+              $state.go('app.otp');
+
+              alert(data);
+              // 'new_password='+createpass.password+'&confirm_password='+createpass.conPassword
+
+            })
+
+
+          }
+
+          else if(data.data.Message.isfrstLogin==1){
+            $scope.firsttime=false;
+          }
+
+        }).catch(function (error) {
+          console.log(error);
+
+        })
+
+
+      }
 
       $scope.distributorLogin= function (distributor,distributorForm) {
        if(distributorForm.$valid){
@@ -1488,6 +1530,28 @@ $scope.productDetail= function (product) {
       })
 
     }
+    $scope.regenrate= function () {
+    var  mobile=userinfoService.getUsermobile()
+      console.log(userinfoService.getUsermobile());
+      $http({
+        method:'POST',
+        url:'http://10.10.10.58/gulf_v1/webservices/services.php/forgotpassword/'+mobile,
+        headers: {
+          'Content-Type': "application/x-www-form-urlencoded"
+        }
+
+      }).success(function (data) {
+        console.log(data)
+        userinfoService.setUserinfo(data)
+
+        $scope.userOtp="Use OTP: "+userinfoService.getUserInfo().otp
+
+        alert(data);
+        // 'new_password='+createpass.password+'&confirm_password='+createpass.conPassword
+
+      })
+
+    }
 
   })
   .controller('CreatePasswordCtrl', function ($scope,$http,userinfoService,$state) {
@@ -1535,5 +1599,37 @@ $scope.productDetail= function (product) {
       })
     }
   })
+  .controller('otpforloginCtrl`', function ($scope,$http,$state,userinfoService,API_ENDPOINT) {
 
+    $scope.verifyotp= function (otp) {
+      var mobile= userinfoService.getUserInfo().mobile;
+      console.log('Mobile',userinfoService.getUserInfo().mobile);
+
+
+      $http.get(API_ENDPOINT.url+'/services.php/verifyOTP/'+userId+'/'+otp).then(function (data) {
+
+        console.log(data.data.otpStatus);
+
+        if(data.data.otpStatus.status==2){
+          alert(data.data.otpStatus.message+" "+"Please regenerate");
+        } else if(data.data.otpStatus.status==1){
+          alert(data.data.otpStatus.message+" "+"Please regenerate");
+        } else if(data.data.otpStatus.status==3){
+          $state.go('app.create_password')
+        } else if(data.data.otpStatus.status==0){
+          alert(data.data.otpStatus.message+" "+"Please regenerate");
+        }
+        /*  if("OTP Expired"==data.otpStatus.status){
+         alert(data.otpStatus.status);
+         }
+         alert('failed');
+         */
+
+      }).catch(function (error) {
+
+      })
+
+    }
+
+  })
 ;

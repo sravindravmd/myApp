@@ -353,6 +353,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
           }
         }
       })
+      .state('app.otpforlogin', {
+        url: '/otpforlogin',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/otpforlogin.html',
+            controller: 'otpforloginCtrl'
+          }
+        }
+      })
       .state('app.create_password', {
         url: '/create_password',
         views: {
